@@ -1,7 +1,23 @@
 package com.datastructures.misc;
 
-/**
- * Created by kumarp9 on 16/01/16.
- */
 public class SingletonClass {
+
+    private static SingletonClass singleObj = new SingletonClass();
+
+    private SingletonClass() {
+
+    }
+
+    public static SingletonClass getInstance() {
+        return singleObj;
+    }
+
+    public void printSomeThing() {
+        System.out.println("This is the example of singleton class");
+    }
+
+    public static void main(String[] args) {
+        SingletonClass obj = getInstance();
+        obj.printSomeThing();
+    }
 }

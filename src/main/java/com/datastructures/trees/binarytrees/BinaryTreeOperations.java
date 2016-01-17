@@ -87,4 +87,22 @@ public class BinaryTreeOperations {
             return size;
         }
     }
+
+    public int heightOfBinaryTree(BinaryTreeNode root){
+
+        if (root == null){
+            return -1;
+        }
+        else {
+            int leftSubTreeHeight = heightOfBinaryTree(root.getLeft());
+            int rightSubTreeHeight = heightOfBinaryTree(root.getRight());
+
+            if (leftSubTreeHeight > rightSubTreeHeight) {
+                return leftSubTreeHeight + 1;
+            } else {
+                return rightSubTreeHeight + 1;
+            }
+        }
+    }
+
 }

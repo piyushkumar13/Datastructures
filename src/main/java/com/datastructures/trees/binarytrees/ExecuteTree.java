@@ -40,7 +40,9 @@ public class ExecuteTree {
         }
 
         /* Size of the binary tree */
-        System.out.println(operations.sizeOfBinaryTree(createdTreeRoot1));
+        System.out.println("The size of the binary tree is : " + operations.sizeOfBinaryTree(createdTreeRoot1));
 
+        /* Height of the binary tree */
+        System.out.println("The height of the binary tree is : " + operations.heightOfBinaryTree(createdTreeRoot1));
     }
 }

@@ -46,7 +46,7 @@ public class StringReversing {
     private static void reverse(int j, int i, char arr[]) {
 
         while (j<i){
-            char temp = arr[j];
+            char temp = arr[j]  ;
             arr[j] = arr[i];
             arr[i] = temp;
             j++;
@@ -54,9 +54,18 @@ public class StringReversing {
         }
     }
 
-    public String reverseThruRecursion(String str){
+    public static String reverseWordThroughRecursion(String str){
 
-        return null;
+        String reverse = "";
+
+        if (str.length() == 1){
+            return str;
+        }
+        else {
+            reverse += str.charAt(str.length()-1) + reverseWordThroughRecursion(str.substring(0, str.length() - 1));
+        }
+
+        return reverse;
 
     }
 
@@ -65,5 +74,6 @@ public class StringReversing {
         System.out.println(reverseString("This is my world of programming"));
         System.out.println(reverseStringUsingSplit("Programming is fun"));
         System.out.println(reverseStringMoreManualWay("I love programming"));
+        System.out.println(reverseWordThroughRecursion("Piyush"));
     }
 }
