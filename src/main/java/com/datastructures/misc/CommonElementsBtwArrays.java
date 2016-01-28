@@ -1,6 +1,6 @@
 package com.datastructures.misc;
 
-/* Programme to get the common elements */
+/* Programme to get the common elements between two arrays. */
 public class CommonElementsBtwArrays {
 
     /* Time complexity is  O(n^2) */

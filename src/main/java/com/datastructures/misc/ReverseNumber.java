@@ -1,6 +1,6 @@
 package com.datastructures.misc;
 
-/* Program to reverse a number */
+/* Programme to reverse a number */
 public class ReverseNumber {
 
     public static int reverseNumber(int num) {

@@ -1,6 +1,6 @@
 package com.datastructures.misc;
 
-/* Sum of digits in a number. */
+/* Programme to find the sum of digits in a number. */
 public class SumOfDigits {
 
     public static int sumOfDigits(int num) {

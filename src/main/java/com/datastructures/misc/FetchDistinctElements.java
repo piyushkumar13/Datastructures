@@ -1,6 +1,6 @@
 package com.datastructures.misc;
 
-
+/* Programme to find the distinct elements in the array. */
 public class FetchDistinctElements {
 
     public static void fetchDistinctElements(int[] arr) {

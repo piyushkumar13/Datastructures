@@ -2,8 +2,8 @@ package com.datastructures.misc;
 
 import java.util.StringTokenizer;
 
+/* Programme to reverse the string line. */
 public class StringReversing {
-
 
     public static String reverseString(String str) {
         String temp = "";

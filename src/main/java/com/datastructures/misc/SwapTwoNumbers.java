@@ -1,6 +1,6 @@
 package com.datastructures.misc;
 
-/* Swapping two numbers. */
+/* Programme to swap two numbers. */
 public class SwapTwoNumbers {
 
     int a;

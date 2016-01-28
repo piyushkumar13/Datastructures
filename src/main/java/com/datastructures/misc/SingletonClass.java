@@ -1,5 +1,6 @@
 package com.datastructures.misc;
 
+/* Programme to create a singleton class. */
 public class SingletonClass {
 
     private static SingletonClass singleObj = new SingletonClass();

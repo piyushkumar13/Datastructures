@@ -41,7 +41,6 @@ public class FindTwoMaxNumbers {
 
             System.out.println("The maximum number is : " + maxOne);
             System.out.println("The 2nd maximum number is : " + maxTwo);
-
     }
 
     public static void main(String[] args) {

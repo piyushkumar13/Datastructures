@@ -1,6 +1,6 @@
 package com.datastructures.misc;
 
-/* Decimal number to binary conversion */
+/* Programme to convert the decimal number to binary. */
 public class DecimalToBinaryConversion {
 
     public static int[] decimalToBinaryConversion(int num) {

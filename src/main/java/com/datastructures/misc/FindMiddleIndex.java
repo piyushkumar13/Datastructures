@@ -1,7 +1,7 @@
 package com.datastructures.misc;
 
 
-/* To find out the middle index where the sum of both ends are equal. */
+/* Programme to find out the middle index where the sum of both ends are equal. */
 public class FindMiddleIndex {
 
     public static int findMiddleIndex(int[] arr) {
