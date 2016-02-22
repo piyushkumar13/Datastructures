@@ -3,7 +3,7 @@ package com.datastructures.sorting;
 /**
  * Insertion sort is preferred for the smaller inputs over the merge sort or any other sorting algorithm even though the
  * time complexity of insertion sort is O(n^2) because the coefficients that are hidden in the big-oh notation is smaller
- * for the merge sort constants. Hence, insertion sort performs well for the smaller inputs.
+ * than the merge sort constants. Hence, insertion sort performs well for the smaller inputs.
  * <p/>
  * Insertion sort and bubble sort both have the O(n) in their best case still insertion sort performs better than the
  * bubble sort because of the lower constants in big-oh notation. Bubble sort is only useful to detect whether the given

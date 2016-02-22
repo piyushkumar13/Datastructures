@@ -1,5 +1,11 @@
 package com.datastructures.sorting;
 
+/**
+ * Quick sort time complexity is O(nlogn) in best and average case. Quick sort average case is more lean to the best case,
+ * instead of worst case. Its worst case time complexity is O(n^2) but this behaviour is very rare. Worst case in the quick sort
+ * occurs when un-balanced partitioning happens. It means if an array is already sorted, then, it will result into the un-balanced
+ * partitioning. Its space complexity is O(log n) in case of best case and average case and in worst case, it is O(n).
+ * */
 public class QuickSortExample {
 
     private static void swap(int[] arr, int i, int j) {

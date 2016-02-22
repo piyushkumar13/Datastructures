@@ -1,21 +1,9 @@
 package com.datastructures.sorting;
 
+/**
+ * Heap sort time complexity is O(nlogn) and space complexity is O(1). But, it is un-stable sort.
+ */
 public class HeapSortExample {
-
-    private static int getLeft(int n) {
-        return (2 * n + 1);
-    }
-
-    private static int getRight(int n) {
-        return (2 * n + 2);
-    }
-
-    private static void swap(int[] arr, int index, int largest) {
-        int temp;
-        temp = arr[index];
-        arr[index] = arr[largest];
-        arr[largest] = temp;
-    }
 
     public static void heapify(int[] arr, int index, int heapSize) {
 
@@ -67,6 +55,21 @@ public class HeapSortExample {
             System.out.print(i + "\t");
         }
 
+    }
+
+    private static int getLeft(int n) {
+        return (2 * n + 1);
+    }
+
+    private static int getRight(int n) {
+        return (2 * n + 2);
+    }
+
+    private static void swap(int[] arr, int index, int largest) {
+        int temp;
+        temp = arr[index];
+        arr[index] = arr[largest];
+        arr[largest] = temp;
     }
 
 }

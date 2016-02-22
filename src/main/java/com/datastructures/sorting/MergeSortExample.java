@@ -1,5 +1,10 @@
 package com.datastructures.sorting;
 
+/**
+ * Merge sort time complexity is O(nlogn) and space complexity is O(n) for an extra array and O(logn) for the system stack
+ * required for the recursive calls.So, total space complexity is O(n + logn) = O(n). But, it is stable sorting technique.
+ * when operating on linked lists, mergesort only requires a small, constant amount of auxiliary storage.
+ */
 public class MergeSortExample {
     private static int[] helper;
 
