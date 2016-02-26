@@ -8,7 +8,7 @@ public class ExecuteList {
 
         // creating the linked list
         Scanner scanner = new Scanner(System.in);
-        System.out.println("Enter the length for the linkedlist : ");
+        System.out.print("Enter the length for the linkedlist : ");
         int length = scanner.nextInt();
         Node[] node = new Node[length];
         for (int i = 0; i < length; i++) {
@@ -44,6 +44,19 @@ public class ExecuteList {
         System.out.println("Printing the linked list after deletion \n");
         singlyLinkedList.print(head);
 
-    }
+        System.out.println("Reversing the linked list.");
+        Node node1 = new Node(7, null);
+        Node node2 = new Node(8, node1);
+        Node node3 = new Node(9, node2);
+        Node head2 = new Node(10, node3);
 
+        Node reverseHead = singlyLinkedList.reverseList(head2);
+        System.out.println("Printing the reversed linked list");
+        singlyLinkedList.print(reverseHead);
+
+
+        Node mergedList = singlyLinkedList.mergeLists(head, reverseHead, null);
+        System.out.println("Printing merged list");
+        singlyLinkedList.print(mergedList);
+    }
 }
