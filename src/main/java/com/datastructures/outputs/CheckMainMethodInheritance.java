@@ -1,6 +1,6 @@
 package com.datastructures.outputs;
 
-
+/* Since main method is static, it will always get hidden not overriden. */
 class ParentClass{
 
     public static void main(String[] args) {

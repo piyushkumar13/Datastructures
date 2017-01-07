@@ -35,6 +35,7 @@ public enum EnumExample {
         //one way
         EnumExample a;
         System.out.println("the value of i " + PIYUSH.getI());
+        System.out.println("the value is :::: " + PIYUSH);
         System.out.println(PIYUSH.getA());
         //second way
         EnumExample b = EnumExample.valueOf("SHEEL");

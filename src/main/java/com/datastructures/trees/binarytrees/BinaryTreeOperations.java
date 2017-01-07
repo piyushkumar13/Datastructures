@@ -8,13 +8,16 @@ public class BinaryTreeOperations {
 
     public BinaryTreeNode createBinaryTree(BinaryTreeNode root, int arr[]) {
 
-        /* Following are the leaf nodes of node3 */
-        BinaryTreeNode node1 = new BinaryTreeNode(arr[3], null, null);
+         /* Following are the leaf nodes */
+        BinaryTreeNode nodeTemp1 = new BinaryTreeNode(arr[7], null, null);
+        BinaryTreeNode nodeTemp2 = new BinaryTreeNode(arr[8], null, null);
+
+        BinaryTreeNode node1 = new BinaryTreeNode(arr[3], nodeTemp1, nodeTemp2);
         BinaryTreeNode node2 = new BinaryTreeNode(arr[4], null, null);
 
         BinaryTreeNode node3 = new BinaryTreeNode(arr[1], node1, node2);
 
-        /* Following are the leaf nodes of node6 */
+        /* Following are the leaf nodes */
         BinaryTreeNode node4 = new BinaryTreeNode(arr[5], null, null);
         BinaryTreeNode node5 = new BinaryTreeNode(arr[6], null, null);
 
@@ -88,12 +91,11 @@ public class BinaryTreeOperations {
         }
     }
 
-    public int heightOfBinaryTree(BinaryTreeNode root){
+    public int heightOfBinaryTree(BinaryTreeNode root) {
 
-        if (root == null){
+        if (root == null) {
             return -1;
-        }
-        else {
+        } else {
             int leftSubTreeHeight = heightOfBinaryTree(root.getLeft());
             int rightSubTreeHeight = heightOfBinaryTree(root.getRight());
 
@@ -105,4 +107,22 @@ public class BinaryTreeOperations {
         }
     }
 
+    public boolean findDataInBinaryTree(BinaryTreeNode root, int data) {
+
+        boolean temp = false;
+        if (root == null) {
+            return false;
+        } else {
+            if (data == root.getData()) {
+                return true;
+            } else {
+                temp = findDataInBinaryTree(root.getLeft(), data);
+                if (temp) {
+                    return true;
+                } else {
+                    return findDataInBinaryTree(root.getRight(), data);
+                }
+            }
+        }
+    }
 }

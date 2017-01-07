@@ -13,7 +13,7 @@ public class ThreadingConcepts implements Runnable {
     @Override
     public void run() {
        for (int i=0;i<5;i++) {
-           System.out.println("This is threading test");
+           System.out.println("This is threading test1");
        }
     }
 
