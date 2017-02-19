@@ -17,8 +17,12 @@ public class SingletonClass {
         System.out.println("This is the example of singleton class");
     }
 
+}
+
+class GetInstanceClass{
+
     public static void main(String[] args) {
-        SingletonClass obj = getInstance();
+        SingletonClass obj = SingletonClass.getInstance();
         obj.printSomeThing();
     }
 }

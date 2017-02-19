@@ -14,9 +14,15 @@ public class HashingEquality {
         this.i = i;
     }
 
+    //    @Override
+//    public int hashCode() {
+//        System.out.println("Hash code called");
+//        return super.hashCode();
+//    }
+
+
     @Override
     public boolean equals(Object o) {
-        System.out.println("equals called");
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
@@ -25,18 +31,6 @@ public class HashingEquality {
         if (i != that.i) return false;
 
         return true;
-    }
-
-//    @Override
-//    public int hashCode() {
-//        System.out.println("Hash code called");
-//        return super.hashCode();
-//    }
-
-    @Override
-    public int hashCode() {
-        System.out.println("hash code called");
-        return i;
     }
 
     public static void main(String[] args) {
