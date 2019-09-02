@@ -39,7 +39,7 @@ public class CoinChangeProblemVariation {
 
     /**
      * This will run in O(size*amount) time complexity and O(size*amount) space complexity.
-     * */
+     */
     static int getMinimumCoinsWithDP1(int[] coins, int size, int amount){
 
         int[][] solTable = new int[size][amount + 1];
@@ -79,7 +79,7 @@ public class CoinChangeProblemVariation {
     /**
      * The above algo is further improvised here. The space complexity is reduced to linear.
      * This will run in O(size*amount) time complexity and O(amount) space complexity.
-     * */
+     */
     static int getMinimumCoinsWithDP2(int[] coins, int size, int amount){
 
         int[] solTable = new int[amount + 1];

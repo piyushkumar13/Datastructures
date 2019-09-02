@@ -64,10 +64,13 @@ public class CoinChangeProblem {
     }
 
 
-    /* Note : When your existing row in the DP Solution table(which is of two dimensional size) just makes use of the last
+    /**
+     *  Note : When your existing row in the DP Solution table(which is of two dimensional size) just makes use of the last
      * row (no other previous rows than the last row), it is quite possible to change that solution with two dimensional array
      * to one dimensional array as a part of further optimization of the space complexity.
-    * */
+     *
+     * This solution will work in O(size*amount) time complexity and O(amount) space complexity i.e linear.
+     */
     static int getNumOfWaysToMakeSumDPSol2(int coins[], int size, int value) {
 
         int[] solTable = new int[value + 1];
