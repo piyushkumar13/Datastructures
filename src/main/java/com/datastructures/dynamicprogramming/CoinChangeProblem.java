@@ -2,113 +2,44 @@ package com.datastructures.dynamicprogramming;
 
 import org.apache.commons.lang.ArrayUtils;
 
-import java.util.Arrays;
-
 /**
+ * Find the number of ways of arrangement of coins(can be different or same) to make the given sum.
+ *
  * @author Piyush Kumar.
- * @since 8/25/19.
+ * @since 9/2/19.
  */
 public class CoinChangeProblem {
 
-    /**
-     * This will run in exponential time complexity.
-     * */
-    static int getMinimumCoinWithBruteForce(int[] coins, int size, int amount) {
+    /* This is a brute force approach. It will work in exponential time complexity. */
+    static int getNumOfWaysToMakeSum(int coins[], int size, int value){
 
-        if (amount == 0) {
+        /* Means no solution */
+        if (size < 0 && value >=1){
             return 0;
         }
 
-        int result = Integer.MAX_VALUE;
-
-        for (int i = 0; i < size; i++) {
-
-            if (coins[i] <= amount) {
-                int temp_result = 1 + getMinimumCoinWithBruteForce(coins, size, amount - coins[i]);
-
-                if (temp_result < result) {
-                    result = temp_result ;
-                }
-            }
+        /* Means no solution */
+        if (value < 0){
+            return 0;
         }
 
-        return result;
-    }
-
-    /**
-     * This will run in O(size*amount) time complexity and O(size*amount) space complexity.
-     * */
-    static int getMinimumCoinsWithDP1(int[] coins, int size, int amount){
-
-        int[][] solTable = new int[size][amount + 1];
-
-
-        for (int[] arr : solTable){
-            Arrays.fill(arr, Integer.MAX_VALUE);
+        if (value == 0){
+            return 1;
         }
 
-        for (int j=0; j < solTable.length; j++){
-            solTable[j][0] = 0;
-        }
-
-        for (int i=0; i< solTable[0].length; i++){
-            solTable[0][i] = i;
-        }
-
-        for (int j = 1; j < size; j++) {
-            for (int i = 1; i < solTable[j].length; i++) {
-
-                if (coins[j] > i) {
-                    solTable[j][i] = solTable[j - 1][i];
-                } else {
-                    solTable[j][i] = Math.min(1 + solTable[j][i - coins[j]], solTable[j-1][i]);
-                }
-            }
-        }
-
-        for (int[] arr : solTable){
-            System.out.println("The solution table is :: " );
-            System.out.println(Arrays.toString(arr));
-        }
-        return solTable[size-1][amount];
-    }
-
-
-    /**
-     * The above algo is further improvised here. The space complexity is reduced to linear.
-     * This will run in O(size*amount) time complexity and O(amount) space complexity.
-     * */
-    static int getMinimumCoinsWithDP2(int[] coins, int size, int amount){
-
-        int[] solTable = new int[amount + 1];
-
-        solTable[0] = 0;
-        Arrays.fill(solTable, 1, solTable.length, Integer.MAX_VALUE);
-
-        for (int i = 1; i < solTable.length; i++) {
-            for (int j = 0; j<size; j++){
-
-                if (coins[j] <= i) {
-                    solTable[i] = Math.min(1 + solTable[i - coins[j]], solTable[i]);
-                }
-            }
-        }
-
-        System.out.println("The solution table is :: " + Arrays.toString(solTable));
-        return solTable[amount];
+        return getNumOfWaysToMakeSum(coins, size-1, value) + getNumOfWaysToMakeSum(coins, size, value - coins[size]);
     }
 
 
     public static void main(String[] args) {
-        int coins[] = {9, 6, 5, 1};
-        int m = coins.length;
-        int V = 11;
-        System.out.println("Minimum coins required is " + getMinimumCoinWithBruteForce(coins, m, V));
+        int coins[] = {1,2,3};
+        int size = coins.length - 1;
+        int value = 5;
 
-        ArrayUtils.reverse(coins); // to get 1,5,6,9 since I need 1 at the start for solving sub problem with 1 coin.
-        System.out.println("Minimum coins required with DP1 solution is " + getMinimumCoinsWithDP1(coins, m, V));
+        int numWays = getNumOfWaysToMakeSum(coins, size, value);
 
-        ArrayUtils.reverse(coins); // to get the original elements in the list
-        System.out.println("Minimum coins required with DP2 solution is " + getMinimumCoinsWithDP2(coins, m, V));
+        System.out.println("The number of ways to make the sum is ::: " + numWays);
+
     }
+
 }
