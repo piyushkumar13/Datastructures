@@ -1,7 +1,5 @@
 package com.datastructures.dynamicprogramming;
 
-import org.apache.commons.lang.ArrayUtils;
-
 import java.util.Arrays;
 
 /**
@@ -12,7 +10,10 @@ import java.util.Arrays;
  */
 public class CoinChangeProblem {
 
-    /* This is a brute force approach. It will work in exponential time complexity. */
+    /**
+     * This is a brute force approach. It will work in exponential time complexity.
+     * For checking its recursive tree, you can refer this : https://www.geeksforgeeks.org/coin-change-dp-7/
+     */
     static int getNumOfWaysToMakeSum(int coins[], int size, int value) {
 
         /* Means no solution */

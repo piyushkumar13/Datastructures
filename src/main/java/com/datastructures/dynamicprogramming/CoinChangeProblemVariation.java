@@ -14,6 +14,7 @@ public class CoinChangeProblemVariation {
 
     /**
      * This will run in exponential time complexity.
+     * For more details refer this : https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/
      * */
     static int getMinimumCoinWithBruteForce(int[] coins, int size, int amount) {
 
