@@ -13,7 +13,7 @@ import java.util.Arrays;
 public class CoinChangeProblemVariation {
 
     /**
-     * This will run in exponential time complexity.
+     * This method finds all possible subsets and works in O(2^n).
      * For more details refer this : https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/
      * */
     static int getMinimumCoinWithBruteForce(int[] coins, int size, int amount) {
@@ -39,7 +39,7 @@ public class CoinChangeProblemVariation {
     }
 
     /**
-     * This will run in O(size*amount) time complexity and O(size*amount) space complexity.
+     * This algorithm works in O(size*amount) time complexity and O(size*amount) space complexity.
      */
     static int getMinimumCoinsWithDP1(int[] coins, int size, int amount){
 
@@ -78,8 +78,8 @@ public class CoinChangeProblemVariation {
 
 
     /**
-     * The above algo is further improvised here. The space complexity is reduced to linear.
-     * This will run in O(size*amount) time complexity and O(amount) space complexity.
+     * This algorithm works in O(size*amount) time complexity and O(amount) space complexity.
+     * The above algorithm is further improvised here. The space complexity is reduced to linear.
      */
     static int getMinimumCoinsWithDP2(int[] coins, int size, int amount){
 

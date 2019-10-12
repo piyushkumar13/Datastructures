@@ -7,6 +7,10 @@ package com.datastructures.dynamicprogramming;
 public class LCSProblem {
 
 
+    /**
+     * This method find all possible subsets and works in O(2^n).
+     * For more details refer this : https://www.geeksforgeeks.org/longest-common-subsequence-dp-4/
+     */
     public static int findLCSBruteForce(char[] str1, char[] str2, int lenStr1, int lenStr2) {
 
         if (lenStr1 == 0 || lenStr2 == 0) {
@@ -18,6 +22,9 @@ public class LCSProblem {
         }
     }
 
+    /**
+     * This algorithm works in time complexity O(str1*str2Len) and space complexity O(str1*str2Len).
+     */
     public static int findLCSDPSol(char[] str1, char[] str2) {
         int[][] solTable = new int[str1.length][str2.length];
 

@@ -8,10 +8,11 @@ public class ContiguouSubArrSum {
 
     /**
      * Its bruteforce approach will work in O(n^3) by using 3 loops.
+     * For more details refer your videos.
      */
 
     /**
-     * This algorithm will run in time complexity O(n) and with constant space complexity O(1)
+     * This algorithm works in time complexity O(n) and with constant space complexity O(1).
      */
     public static int findMaxSubArrSum(int[] arr) {
         int previousSum = arr[0];

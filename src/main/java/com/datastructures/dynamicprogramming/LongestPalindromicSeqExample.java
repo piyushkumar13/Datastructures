@@ -7,6 +7,10 @@ package com.datastructures.dynamicprogramming;
 public class LongestPalindromicSeqExample {
 
 
+    /**
+     * This method find all possible subsets and works in O(2^n).
+     * For more details refer this : https://www.geeksforgeeks.org/longest-palindromic-subsequence-dp-12/
+     */
     public static int findLongestPalindromicSeqBruteForce(char[] arr, int start, int end) {
 
         if (start == end) {
@@ -22,6 +26,9 @@ public class LongestPalindromicSeqExample {
         }
     }
 
+    /**
+     * This algorithm works in time complexity O(arrLen*arrLen) and space complexity O(arrLen*arrLen).
+     */
     public static int findLongestPalindromicSeqDPSol(char[] arr) {
 
         int[][] solTable = new int[arr.length][arr.length];

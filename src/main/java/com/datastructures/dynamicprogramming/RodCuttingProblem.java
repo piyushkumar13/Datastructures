@@ -6,29 +6,10 @@ package com.datastructures.dynamicprogramming;
  */
 public class RodCuttingProblem {
 
-//    static int maxSum = Integer.MIN_VALUE;
-//
-//    public static int getMaxProfitForCuttingBruteForce(int[] arr, int end,int rodLen){
-//
-//        if (end == 0 || rodLen == 0 ){
-//            return arr[end];
-//        }
-//
-////         int maxSum =Integer.MIN_VALUE;
-//
-//        int excSum = getMaxProfitForCuttingBruteForce(arr, end - 1, rodLen);
-//
-//        int incSum = 0;
-//        if (rodLen>=1) {
-//            incSum = getMaxProfitForCuttingBruteForce(arr, end, rodLen - end - 1);
-//        }
-//        if (Math.max(excSum, incSum) > maxSum){
-//            maxSum = Math.max(excSum, incSum);
-//        }
-//
-//        return maxSum;
-//    }
-
+    /**
+     * This method find all possible subsets and works in O(2^n).
+     * For more details refer this : https://www.geeksforgeeks.org/cutting-a-rod-dp-13/
+     */
     public static int getMaxProfitForCuttingBruteForce(int[] arr, int rodLen) {
 
         if (rodLen <= 0) {
@@ -47,7 +28,9 @@ public class RodCuttingProblem {
         return maxProfit;
     }
 
-
+    /**
+     * This algorithm works in time complexity O(profitValues*size) and space complexity O(profitValues*size).
+     */
     public static int getMaxProfitForCuttingDP(int[] profitValues, int size) {
 
         int[][] solTable = new int[profitValues.length][size + 1];
@@ -70,6 +53,11 @@ public class RodCuttingProblem {
         return solTable[profitValues.length - 1][size];
     }
 
+
+    /**
+     * This algorithm further optimizes the space complexity.
+     * This will work in time complexity O(size*size) and space complexity O(size).
+     */
     public static int getMaxProfitForCuttingDP2(int[] profitValues, int size) {
 
         int[] solTable = new int[size + 1];

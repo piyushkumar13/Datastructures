@@ -10,7 +10,9 @@ public class LISProblem {
 
 
     /**
-     * This algorithm will work in O(2^n). This algorithm goes from start to end.
+     * This method find all possible subsets and works in O(2^n).
+     * This algorithm goes from start to end.
+     * For more details refer this : https://www.techiedelight.com/longest-increasing-subsequence-using-dynamic-programming/
      */
     public static int lisBruteForce(int[] arr, int i, int n, int prev) {
 
@@ -35,7 +37,9 @@ public class LISProblem {
     }
 
     /**
-     * This algorithm will work in O(2^n). This algorithm goes from end to start.
+     * This method find all possible subsets and works in O(2^n).
+     * This algorithm goes from end to start.
+     * @author Piyush Kumar.
      */
     public static int lisBruteForce2(int[] arr, int n, int next) {
 
@@ -60,7 +64,7 @@ public class LISProblem {
     }
 
     /**
-     * This will run in time complexity O(n) with space complexity O(n)
+     * This algorithm works in time complexity O(n) with space complexity O(n).
      */
     public static int listWithDP(int[] arr) {
 

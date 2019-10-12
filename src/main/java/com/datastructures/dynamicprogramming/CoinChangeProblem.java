@@ -11,10 +11,10 @@ import java.util.Arrays;
 public class CoinChangeProblem {
 
     /**
-     * This is a brute force approach. It will work in exponential time complexity.
+     * This method finds all possible subsets and works in O(2^n).
      * For checking its recursive tree, you can refer this : https://www.geeksforgeeks.org/coin-change-dp-7/
      */
-    static int getNumOfWaysToMakeSum(int coins[], int size, int value) {
+    static int getNumOfWaysToMakeSumBruteForce(int coins[], int size, int value) {
 
         /* Means no solution */
         if (size < 0 && value >= 1) {
@@ -30,11 +30,13 @@ public class CoinChangeProblem {
             return 1;
         }
 
-        return getNumOfWaysToMakeSum(coins, size - 1, value) + getNumOfWaysToMakeSum(coins, size, value - coins[size]);
+        return getNumOfWaysToMakeSumBruteForce(coins, size - 1, value) + getNumOfWaysToMakeSumBruteForce(coins, size, value - coins[size]);
     }
 
 
-    /* This solution will work in O(size*amount) time complexity and O(size*amount) space complexity. */
+    /**
+     *  This algorithm works in O(size*amount) time complexity and O(size*amount) space complexity.
+     */
     static int getNumOfWaysToMakeSumDPSol1(int coins[], int size, int value) {
 
         int[][] solTable = new int[size + 1][value + 1];
@@ -66,11 +68,11 @@ public class CoinChangeProblem {
 
 
     /**
+     * This algorithm works in O(size*amount) time complexity and O(amount) space complexity i.e linear.
+     *
      *  Note : When your existing row in the DP Solution table(which is of two dimensional size) just makes use of the last
      * row (no other previous rows than the last row), it is quite possible to change that solution with two dimensional array
      * to one dimensional array as a part of further optimization of the space complexity.
-     *
-     * This solution will work in O(size*amount) time complexity and O(amount) space complexity i.e linear.
      */
     static int getNumOfWaysToMakeSumDPSol2(int coins[], int size, int value) {
 
@@ -100,7 +102,7 @@ public class CoinChangeProblem {
         int size = coins.length - 1;
         int value = 5;
 
-        int numWays = getNumOfWaysToMakeSum(coins, size, value);
+        int numWays = getNumOfWaysToMakeSumBruteForce(coins, size, value);
 
         System.out.println("The number of ways to make the sum is ::: " + numWays);
 

@@ -9,9 +9,12 @@ import java.util.Arrays;
 public class SubsetSumProblem {
 
     /**
-     * This algorithm works in O(2^n) as it finds all possible subsets. This uses backtracking.
+     * This method finds all possible subsets and works in O(2^n).
+     * This uses backtracking.
+     *
+     * @author Piyush Kumar.
      */
-    static boolean isSubsetExist1(int[] arr, int aIndex, int size, int sum) {
+    static boolean isSubsetExistBruteForce(int[] arr, int aIndex, int size, int sum) {
 
         if (sum == 0) {
             return true;
@@ -22,7 +25,7 @@ public class SubsetSumProblem {
 
         for (int i = aIndex; i < size; i++) {
             if (arr[i] <= sum) {
-                if (isSubsetExist1(arr, i + 1, size, sum - arr[i])) {
+                if (isSubsetExistBruteForce(arr, i + 1, size, sum - arr[i])) {
                     return true;
                 }
             }
@@ -32,10 +35,10 @@ public class SubsetSumProblem {
     }
 
     /**
-     * This method also find all possible subsets and works in O(2^n).
+     * This method finds all possible subsets and works in O(2^n).
      * For more details refer this : https://www.geeksforgeeks.org/subset-sum-problem-dp-25/
      */
-    static boolean isSubsetExists2(int[] arr, int size, int sum) {
+    static boolean isSubsetExistsBruteForce2(int[] arr, int size, int sum) {
 
         if (sum == 0) {
             return true;
@@ -45,11 +48,11 @@ public class SubsetSumProblem {
             return false;
         }
 
-        return isSubsetExists2(arr, size - 1, sum) || isSubsetExists2(arr, size - 1, sum - arr[size]);
+        return isSubsetExistsBruteForce2(arr, size - 1, sum) || isSubsetExistsBruteForce2(arr, size - 1, sum - arr[size]);
     }
 
     /**
-     * This algorithm works in time complexity O(size*sum) and space complexity O(size*sum)
+     * This algorithm works in time complexity O(size*sum) and space complexity O(size*sum).
      */
     static boolean isSubsetExistsDPSol1(int[] arr, int sum) {
 
@@ -82,6 +85,10 @@ public class SubsetSumProblem {
         return solTable[size - 1][sum];
     }
 
+    /**
+     * This algorithm works in time complexity O(size*sum) and space complexity O(sum).
+     * This algorithm further optimizes the space complexity.
+     */
     static boolean isSubsetExistsDPSol2(int[] arr, int sum){
         boolean[] solTable = new boolean[sum + 1];
 
@@ -113,7 +120,7 @@ public class SubsetSumProblem {
         int size = arr.length;
         int sum = 10;
 
-        if (isSubsetExist1(arr, 0, size, sum)) {
+        if (isSubsetExistBruteForce(arr, 0, size, sum)) {
             System.out.println("The subset exists making given sum");
         } else {
             System.out.println("The subset does not exists making given sum");
@@ -121,7 +128,7 @@ public class SubsetSumProblem {
 
         int size2 = size - 1;
 
-        boolean isSubsetExists = isSubsetExists2(arr, size2, sum);
+        boolean isSubsetExists = isSubsetExistsBruteForce2(arr, size2, sum);
         if (isSubsetExists) {
             System.out.println("The subset exists by using bruteforce method 2");
         } else {
