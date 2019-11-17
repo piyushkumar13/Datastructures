@@ -94,7 +94,7 @@ public class BinaryTreeOperations {
     public int heightOfBinaryTree(BinaryTreeNode root) {
 
         if (root == null) {
-            return -1;
+            return 0;
         } else {
             int leftSubTreeHeight = heightOfBinaryTree(root.getLeft());
             int rightSubTreeHeight = heightOfBinaryTree(root.getRight());
@@ -124,5 +124,36 @@ public class BinaryTreeOperations {
                 }
             }
         }
+    }
+
+
+    public BinaryTreeNode getLCA(BinaryTreeNode root, BinaryTreeNode n1, BinaryTreeNode n2){
+
+        if (root == n1 || root == n2){
+            return root;
+        }
+
+        BinaryTreeNode left = getLCA(root.getLeft(), n1, n2);
+        BinaryTreeNode right = getLCA(root.getRight(), n1, n2);
+
+        if (left != null && right != null){
+            return root;
+        }
+
+        return left != null? left : right;
+    }
+
+    public int getDiameter(BinaryTreeNode root){
+        if (root == null){
+            return 0;
+        }
+
+        int left = heightOfBinaryTree(root.getLeft());
+        int right = heightOfBinaryTree(root.getRight());
+
+        int leftDiameter = getDiameter(root.getLeft());
+        int rightDiameter = getDiameter(root.getRight());
+
+        return Math.max(left + right + 1, Math.max(leftDiameter, rightDiameter));
     }
 }

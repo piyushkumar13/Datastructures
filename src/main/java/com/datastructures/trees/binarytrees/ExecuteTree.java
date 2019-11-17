@@ -24,5 +24,7 @@ public class ExecuteTree {
         else {
             System.out.println("The element is not present in the tree");
         }
+
+        System.out.println("The height of a binary tree is :::: " + operations.heightOfBinaryTree(root1));
     }
 }
