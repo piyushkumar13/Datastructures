@@ -1,5 +1,7 @@
 package com.datastructures.dynamicprogramming;
 
+import java.util.Arrays;
+
 /**
  * @author Piyush Kumar.
  * @since 10/7/19.
@@ -53,6 +55,9 @@ public class LCSProblem {
             }
         }
 
+        for (int[] arr: solTable){
+            System.out.println(Arrays.toString(arr));
+        }
         return solTable[str1.length-1][str2.length-1];
 
     }

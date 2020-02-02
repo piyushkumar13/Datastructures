@@ -44,11 +44,11 @@ public class SubsetSumProblem {
             return true;
         }
 
-        if (size < 0 && sum != 0) {
+        if (size == 0 && sum != 0) {
             return false;
         }
 
-        return isSubsetExistsBruteForce2(arr, size - 1, sum) || isSubsetExistsBruteForce2(arr, size - 1, sum - arr[size]);
+        return isSubsetExistsBruteForce2(arr, size - 1, sum) || isSubsetExistsBruteForce2(arr, size - 1, sum - arr[size-1]);
     }
 
     /**
@@ -116,7 +116,7 @@ public class SubsetSumProblem {
     }
 
     public static void main(String[] args) {
-        int arr[] = {3, 4, 5};
+        int arr[] = {3, 34, 4, 12, 5, 2};
         int size = arr.length;
         int sum = 10;
 
@@ -126,9 +126,7 @@ public class SubsetSumProblem {
             System.out.println("The subset does not exists making given sum");
         }
 
-        int size2 = size - 1;
-
-        boolean isSubsetExists = isSubsetExistsBruteForce2(arr, size2, sum);
+        boolean isSubsetExists = isSubsetExistsBruteForce2(arr, size, sum);
         if (isSubsetExists) {
             System.out.println("The subset exists by using bruteforce method 2");
         } else {
