@@ -64,7 +64,7 @@ public class LISProblem {
     }
 
     /**
-     * This algorithm works in time complexity O(n) with space complexity O(n).
+     * This algorithm works in time complexity O(n^2) with space complexity O(n).
      */
     public static int listWithDP(int[] arr) {
 

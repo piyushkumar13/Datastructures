@@ -60,7 +60,7 @@ public class EggDroppingProblem {
 
         for (int i = 2; i <= eggs; i++){
 
-            for (int j = 1; j <= floors; j++){
+            for (int j = 2; j <= floors; j++){
 
                 solTable[i][j] = Integer.MAX_VALUE;
                 for (int x = 1; x <=j; x++){

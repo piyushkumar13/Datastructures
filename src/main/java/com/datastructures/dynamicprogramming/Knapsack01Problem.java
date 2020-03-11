@@ -89,7 +89,7 @@ public class Knapsack01Problem {
         int[][] solTable = new int[wts.length][sackWeight + 1];
 
         for (int i = 0; i < sackWeight + 1; i++) {
-            solTable[0][i] = wts[0] == i ? values[0] : 0;
+            solTable[0][i] = i >= wts[0] ? values[0] : 0;
         }
 
         for (int i = 1; i < wts.length; i++) {

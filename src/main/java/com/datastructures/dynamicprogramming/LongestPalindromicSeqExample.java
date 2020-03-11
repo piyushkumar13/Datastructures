@@ -17,7 +17,7 @@ public class LongestPalindromicSeqExample {
             return 1;
         } else if (start + 1 == end && arr[start] == arr[end]) {
             return 2;
-        } else if (start + 1 == end && arr[start] != arr[end]) {
+        } else if (start + 1 == end && arr[start] != arr[end]) { // this condition is not required since it will anyway fall under else condition. But having this condition, will not harm.
             return 1;
         } else if (arr[start] == arr[end]) {
             return 2 + findLongestPalindromicSeqBruteForce(arr, start + 1, end - 1);
