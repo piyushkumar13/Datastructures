@@ -22,7 +22,8 @@ public class ContiguouSubArrSum {
 
         for (int i = 1; i < arr.length; i++) {
 
-            previousSum = Math.max(arr[i] + previousSum, arr[i]) < 0 ? 0 : Math.max(arr[i] + previousSum, arr[i]);
+//            previousSum = Math.max(arr[i] + previousSum, arr[i]) < 0 ? 0 : Math.max(arr[i] + previousSum, arr[i]); // This is also correct
+            previousSum = Math.max(arr[i] + previousSum, arr[i]); // This is also correct
             if (previousSum > maxSum) {
                 maxSum = previousSum;
             }
