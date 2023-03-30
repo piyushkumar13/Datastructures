@@ -1,10 +1,3 @@
-/*
- *  Copyright (c) 2023 DMG
- *  All Rights Reserved Worldwide.
- *
- *  THIS PROGRAM IS CONFIDENTIAL AND PROPRIETARY TO DMG
- *  AND CONSTITUTES A VALUABLE TRADE SECRET.
- */
 package com.datastructures.lowleveldesign;
 
 import static java.util.Objects.isNull;
@@ -19,16 +12,15 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 /**
- * TODO : This is not the correct implementation of router. Please refer Router2
- *
+ * This is the correct implementation of Router.
  * @author Piyush Kumar.
  * @since 30/03/23.
  */
-public class Router {
+public class Router2 {
 
     private Map<String, String> routes;
 
-    public Router(){
+    public Router2(){
         routes = new HashMap<>();
     }
 
@@ -38,19 +30,15 @@ public class Router {
             throw new RuntimeException("Invalid Configuration");
         }
 
-        if (route.endsWith("/")){
-
-            route = route.substring(0, route.length()-1);
+        if (route.contains("*")){
+            route = route.replace("*", "[a-z0-9]*");
         }
 
-        if (route.contains("/*/")){
-            route = route.replace("/*/", "/[a-z0-9]*/");
+        if (!route.endsWith("/") && !route.endsWith("*")){
+
+            route = route + "/";
         }
 
-        if (route.endsWith("/*")){
-
-            route = route.replace("/*", "[a-z0-9]*");
-        }
 
         routes.put(route, serviceName);
     }
@@ -61,8 +49,8 @@ public class Router {
             throw new RuntimeException("Invalid route");
         }
 
-        if (route.endsWith("/")){
-            route = route.substring(0, route.length()-1);
+        if (!route.endsWith("/")){
+            route = route + "/";
         }
 
         String serviceName = routes.get(route);
@@ -91,14 +79,16 @@ public class Router {
 
     public static void main(String[] args) {
 
-        Router router = new Router();
+        Router2 router = new Router2();
 
         router.addRoutes("/foo/*", "service1");
         router.addRoutes("/foo/bar", "service2");
         router.addRoutes("/foo/*/bar", "service3");
+        router.addRoutes("/foo", "service4");
 
         System.out.println(router.getServiceForRoute("/foo/"));
         System.out.println(router.getServiceForRoute("/foo"));
         System.out.println(router.getServiceForRoute("/foo/123/bar"));
+        System.out.println(router.getServiceForRoute("/foobar"));
     }
 }
