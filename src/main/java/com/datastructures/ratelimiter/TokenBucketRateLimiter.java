@@ -66,7 +66,7 @@ public class TokenBucketRateLimiter implements RateLimiter {
             }
         } else {
 
-            Value user = new Value(new AtomicInteger(this.tokensCapacity), System.currentTimeMillis());
+            Value user = new Value(new AtomicInteger(this.tokensCapacity), Instant.now().getEpochSecond());
 
             tokenMap.put(userId, user);
         }
