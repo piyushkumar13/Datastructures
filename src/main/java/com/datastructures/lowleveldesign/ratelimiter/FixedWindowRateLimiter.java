@@ -7,6 +7,7 @@
  */
 package com.datastructures.lowleveldesign.ratelimiter;
 
+import java.time.Instant;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -48,7 +49,7 @@ public class FixedWindowRateLimiter implements RateLimiter {
                 return false;
             }
         } else {
-            fixedWindowPerUserWindow.put(userId, new Value(this.capacity, stipulatedWindowNum));
+            fixedWindowPerUserWindow.put(userId, new Value(0, stipulatedWindowNum));
 
         }
 
