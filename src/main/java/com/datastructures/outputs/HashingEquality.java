@@ -10,7 +10,7 @@ public class HashingEquality {
 
     int i;
 
-    HashingEquality(int i){
+    HashingEquality(int i) {
         this.i = i;
     }
 
@@ -41,7 +41,7 @@ public class HashingEquality {
 
         HashSet<HashingEquality> set = new HashSet<HashingEquality>();
         set.add(obj1);
-        System.out.println("adding "+set.add(obj2));
+        System.out.println("adding " + set.add(obj2));
         System.out.println(set.size());
         System.out.println(set.contains(obj2));
     }

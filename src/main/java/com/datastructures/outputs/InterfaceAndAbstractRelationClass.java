@@ -1,10 +1,12 @@
 package com.datastructures.outputs;
 
-interface ParentI{
+interface ParentI {
     void display();
+
     void printI();
 }
-public abstract   class InterfaceAndAbstractRelationClass implements ParentI {
+
+public abstract class InterfaceAndAbstractRelationClass implements ParentI {
     @Override
     public void printI() {
 

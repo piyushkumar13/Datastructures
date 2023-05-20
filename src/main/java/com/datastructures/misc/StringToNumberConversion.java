@@ -1,8 +1,8 @@
 package com.datastructures.misc;
 
 /*
-* Programme to convert the string to a number without using Integer.parseIn() or any conversion function.
-* */
+ * Programme to convert the string to a number without using Integer.parseIn() or any conversion function.
+ * */
 public class StringToNumberConversion {
 
     public static int convertStringToNumber(String num) {

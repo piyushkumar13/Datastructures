@@ -28,26 +28,26 @@ public class Router {
 
     private Map<String, String> routes;
 
-    public Router(){
+    public Router() {
         routes = new HashMap<>();
     }
 
-    public void addRoutes(String route, String serviceName){
+    public void addRoutes(String route, String serviceName) {
 
-        if (isNull(route) || isNull(serviceName) || route.isEmpty() || serviceName.isEmpty()){
+        if (isNull(route) || isNull(serviceName) || route.isEmpty() || serviceName.isEmpty()) {
             throw new RuntimeException("Invalid Configuration");
         }
 
-        if (route.endsWith("/")){
+        if (route.endsWith("/")) {
 
-            route = route.substring(0, route.length()-1);
+            route = route.substring(0, route.length() - 1);
         }
 
-        if (route.contains("/*/")){
+        if (route.contains("/*/")) {
             route = route.replace("/*/", "/[a-z0-9]*/");
         }
 
-        if (route.endsWith("/*")){
+        if (route.endsWith("/*")) {
 
             route = route.replace("/*", "[a-z0-9]*");
         }
@@ -55,30 +55,30 @@ public class Router {
         routes.put(route, serviceName);
     }
 
-    public String getServiceForRoute(String route){
+    public String getServiceForRoute(String route) {
 
-        if (isNull(route) || route.isEmpty()){
+        if (isNull(route) || route.isEmpty()) {
             throw new RuntimeException("Invalid route");
         }
 
-        if (route.endsWith("/")){
-            route = route.substring(0, route.length()-1);
+        if (route.endsWith("/")) {
+            route = route.substring(0, route.length() - 1);
         }
 
         String serviceName = routes.get(route);
 
-        if (nonNull(serviceName)){
+        if (nonNull(serviceName)) {
             return serviceName;
 
         }
 
         Set<String> routeSet = new TreeSet<>(Comparator.reverseOrder());
-        for (Map.Entry<String, String> routeEntry : routes.entrySet()){
+        for (Map.Entry<String, String> routeEntry : routes.entrySet()) {
 
             Pattern compiledRoute = Pattern.compile(routeEntry.getKey());
 
             Matcher matcher = compiledRoute.matcher(route);
-            if (matcher.matches()){
+            if (matcher.matches()) {
 
                 routeSet.add(routeEntry.getKey());
             }

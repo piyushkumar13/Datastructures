@@ -88,10 +88,10 @@ public class ExecutorServiceExample {
             e.printStackTrace();
         }
 
-        Future<Integer> exValue2 = es.submit(new CallableExampleWithInt(10,20));
+        Future<Integer> exValue2 = es.submit(new CallableExampleWithInt(10, 20));
         try {
             System.out.println(exValue2.get());
-        }catch (Exception e){
+        } catch (Exception e) {
 
         }
 

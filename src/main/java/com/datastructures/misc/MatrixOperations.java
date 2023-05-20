@@ -33,7 +33,7 @@ public class MatrixOperations {
             for (int j = 0; j < 3; j++) {
                 malArray[i][j] = 0;
                 for (int k = 0; k < 3; k++) {
-                    malArray[i][j] += arr1[i][k]*arr2[k][j];
+                    malArray[i][j] += arr1[i][k] * arr2[k][j];
                 }
             }
         }
@@ -55,7 +55,7 @@ public class MatrixOperations {
         int[][] arr1 = new int[3][3];
         int[][] arr2 = new int[3][3];
         int[][] addedArray = new int[3][3];
-        int[][] malArray = new int [3][3];
+        int[][] malArray = new int[3][3];
 
         createMatrix(arr1);
         System.out.println("Printing the matrix 1 ");
@@ -73,10 +73,9 @@ public class MatrixOperations {
         System.out.println("Printing the added matrix");
         printMatrix(addedArray);
 
-        malMatrices(arr1,arr2,malArray);
+        malMatrices(arr1, arr2, malArray);
         System.out.println("Printing multiplied matrix");
         printMatrix(malArray);
-
 
 
     }

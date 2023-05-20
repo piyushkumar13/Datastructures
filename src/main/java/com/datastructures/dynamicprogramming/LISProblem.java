@@ -39,6 +39,7 @@ public class LISProblem {
     /**
      * This method find all possible subsets and works in O(2^n).
      * This algorithm goes from end to start.
+     *
      * @author Piyush Kumar.
      */
     public static int lisBruteForce2(int[] arr, int n, int next) {
@@ -92,7 +93,7 @@ public class LISProblem {
 
 
     public static void main(String[] args) {
-        int[] arr = {3, 2,10, 12};
+        int[] arr = {3, 2, 10, 12};
 
         int lisLen = lisBruteForce(arr, 0, arr.length, Integer.MIN_VALUE);
 

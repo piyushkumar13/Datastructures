@@ -15,7 +15,7 @@ public class CoinChangeProblemVariation {
     /**
      * This method finds all possible subsets and works in O(2^n).
      * For more details refer this : https://www.geeksforgeeks.org/find-minimum-number-of-coins-that-make-a-change/
-     * */
+     */
     static int getMinimumCoinWithBruteForce(int[] coins, int size, int amount) {
 
         if (amount == 0) {
@@ -30,7 +30,7 @@ public class CoinChangeProblemVariation {
                 int temp_result = 1 + getMinimumCoinWithBruteForce(coins, size, amount - coins[i]);
 
                 if (temp_result < result) {
-                    result = temp_result ;
+                    result = temp_result;
                 }
             }
         }
@@ -41,20 +41,20 @@ public class CoinChangeProblemVariation {
     /**
      * This algorithm works in O(size*amount) time complexity and O(size*amount) space complexity.
      */
-    static int getMinimumCoinsWithDP1(int[] coins, int size, int amount){
+    static int getMinimumCoinsWithDP1(int[] coins, int size, int amount) {
 
         int[][] solTable = new int[size][amount + 1];
 
 
-        for (int[] arr : solTable){
+        for (int[] arr : solTable) {
             Arrays.fill(arr, Integer.MAX_VALUE);
         }
 
-        for (int j=0; j < solTable.length; j++){
+        for (int j = 0; j < solTable.length; j++) {
             solTable[j][0] = 0;
         }
 
-        for (int i=0; i< solTable[0].length; i++){
+        for (int i = 0; i < solTable[0].length; i++) {
             solTable[0][i] = i;
         }
 
@@ -64,16 +64,16 @@ public class CoinChangeProblemVariation {
                 if (coins[j] > i) {
                     solTable[j][i] = solTable[j - 1][i];
                 } else {
-                    solTable[j][i] = Math.min(1 + solTable[j][i - coins[j]], solTable[j-1][i]);
+                    solTable[j][i] = Math.min(1 + solTable[j][i - coins[j]], solTable[j - 1][i]);
                 }
             }
         }
 
-        for (int[] arr : solTable){
-            System.out.println("The solution table is :: " );
+        for (int[] arr : solTable) {
+            System.out.println("The solution table is :: ");
             System.out.println(Arrays.toString(arr));
         }
-        return solTable[size-1][amount];
+        return solTable[size - 1][amount];
     }
 
 
@@ -81,7 +81,7 @@ public class CoinChangeProblemVariation {
      * This algorithm works in O(size*amount) time complexity and O(amount) space complexity.
      * The above algorithm is further improvised here. The space complexity is reduced to linear.
      */
-    static int getMinimumCoinsWithDP2(int[] coins, int size, int amount){
+    static int getMinimumCoinsWithDP2(int[] coins, int size, int amount) {
 
         int[] solTable = new int[amount + 1];
 
@@ -89,7 +89,7 @@ public class CoinChangeProblemVariation {
         Arrays.fill(solTable, 1, solTable.length, Integer.MAX_VALUE);
 
         for (int i = 1; i < solTable.length; i++) {
-            for (int j = 0; j<size; j++){
+            for (int j = 0; j < size; j++) {
 
                 if (coins[j] <= i) {
                     solTable[i] = Math.min(1 + solTable[i - coins[j]], solTable[i]);

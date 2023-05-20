@@ -6,28 +6,29 @@ package com.datastructures.outputs;
 public class ThreadingConcepts implements Runnable {
 
 
-    public ThreadingConcepts(){
-       new Thread(this).start();
+    public ThreadingConcepts() {
+        new Thread(this).start();
 
     }
+
     @Override
     public void run() {
-       for (int i=0;i<5;i++) {
-           System.out.println("This is threading test1");
-       }
+        for (int i = 0; i < 5; i++) {
+            System.out.println("This is threading test1");
+        }
     }
 
     public static void main(String[] args) {
         ThreadingConcepts concepts = new ThreadingConcepts();
-       // we can also run the thread in the following way. Just remove the statement new Thread(this).start from constructor
-       // new Thread(concepts).start();
+        // we can also run the thread in the following way. Just remove the statement new Thread(this).start from constructor
+        // new Thread(concepts).start();
     }
 }
 
 class ThreadingConcepts2 extends Thread {
 
     public ThreadingConcepts2() {
-       // super();
+        // super();
         start();
 
     }

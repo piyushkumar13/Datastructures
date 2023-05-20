@@ -26,27 +26,27 @@ public class SubArrWithGivenSum {
         int i = 0;
         int queueSum = 0;
         int count = 0;
-        while(i < arr.size()){
+        while (i < arr.size()) {
 
-            if(queueSum > k){
+            if (queueSum > k) {
                 queueSum = queueSum - queue.removeFirst();
-                if(queueSum == k){
+                if (queueSum == k) {
                     count++;
                 }
-            }else{
+            } else {
 
                 queue.add(arr.get(i));
                 queueSum = queueSum + arr.get(i);
-                if(queueSum == k){
+                if (queueSum == k) {
                     count++;
                 }
                 i++;
             }
         }
 
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
             queueSum = queueSum - queue.removeFirst();
-            if(queueSum == k){
+            if (queueSum == k) {
                 count++;
             }
         }
@@ -56,7 +56,6 @@ public class SubArrWithGivenSum {
 
 
     }
-
 
 
     public static void main(String[] args) {

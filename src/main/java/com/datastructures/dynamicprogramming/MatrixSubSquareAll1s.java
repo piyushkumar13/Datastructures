@@ -44,14 +44,13 @@ public class MatrixSubSquareAll1s {
         /* Finding the max entry in the solution table. */
         int maxEntry = Integer.MIN_VALUE;
 
-        for (int i=0; i < solTable.length; i++){
-            for (int j=0; j < solTable[0].length; j++){
-                if (solTable[i][j] > maxEntry){
+        for (int i = 0; i < solTable.length; i++) {
+            for (int j = 0; j < solTable[0].length; j++) {
+                if (solTable[i][j] > maxEntry) {
                     maxEntry = solTable[i][j];
                 }
             }
         }
-
 
 
         System.out.println("The maximum size of a matrix with all 1s are ::: " + maxEntry);

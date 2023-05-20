@@ -13,6 +13,7 @@ import java.util.regex.Pattern;
 
 /**
  * This is the correct implementation of Router.
+ *
  * @author Piyush Kumar.
  * @since 30/03/23.
  */
@@ -20,21 +21,21 @@ public class Router2 {
 
     private Map<String, String> routes;
 
-    public Router2(){
+    public Router2() {
         routes = new HashMap<>();
     }
 
-    public void addRoutes(String route, String serviceName){
+    public void addRoutes(String route, String serviceName) {
 
-        if (isNull(route) || isNull(serviceName) || route.isEmpty() || serviceName.isEmpty()){
+        if (isNull(route) || isNull(serviceName) || route.isEmpty() || serviceName.isEmpty()) {
             throw new RuntimeException("Invalid Configuration");
         }
 
-        if (route.contains("*")){
+        if (route.contains("*")) {
             route = route.replace("*", "[a-z0-9]*");
         }
 
-        if (!route.endsWith("/") && !route.endsWith("*")){
+        if (!route.endsWith("/") && !route.endsWith("*")) {
 
             route = route + "/";
         }
@@ -43,30 +44,30 @@ public class Router2 {
         routes.put(route, serviceName);
     }
 
-    public String getServiceForRoute(String route){
+    public String getServiceForRoute(String route) {
 
-        if (isNull(route) || route.isEmpty()){
+        if (isNull(route) || route.isEmpty()) {
             throw new RuntimeException("Invalid route");
         }
 
-        if (!route.endsWith("/")){
+        if (!route.endsWith("/")) {
             route = route + "/";
         }
 
         String serviceName = routes.get(route);
 
-        if (nonNull(serviceName)){
+        if (nonNull(serviceName)) {
             return serviceName;
 
         }
 
         Set<String> routeSet = new TreeSet<>(Comparator.reverseOrder());
-        for (Map.Entry<String, String> routeEntry : routes.entrySet()){
+        for (Map.Entry<String, String> routeEntry : routes.entrySet()) {
 
             Pattern compiledRoute = Pattern.compile(routeEntry.getKey());
 
             Matcher matcher = compiledRoute.matcher(route);
-            if (matcher.matches()){
+            if (matcher.matches()) {
 
                 routeSet.add(routeEntry.getKey());
             }

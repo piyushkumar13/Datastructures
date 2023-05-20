@@ -51,9 +51,9 @@ public class GraphDFS {
         }
     }
 
-    public static void traverseUnconnectedGraph(ArrayList<Integer>[] adjList, boolean[] visited){
+    public static void traverseUnconnectedGraph(ArrayList<Integer>[] adjList, boolean[] visited) {
 
-        for (int vertex=0; vertex < adjList.length; vertex++){
+        for (int vertex = 0; vertex < adjList.length; vertex++) {
 
             traverseConnectedGraph(adjList, vertex, visited);
         }

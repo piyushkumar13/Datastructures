@@ -5,7 +5,7 @@
  *  THIS PROGRAM IS CONFIDENTIAL AND PROPRIETARY TO GOTO
  *  AND CONSTITUTES A VALUABLE TRADE SECRET.
  */
-package com.datastructures.ratelimiter;
+package com.datastructures.lowleveldesign.ratelimiter;
 
 import java.time.Instant;
 import java.util.HashMap;

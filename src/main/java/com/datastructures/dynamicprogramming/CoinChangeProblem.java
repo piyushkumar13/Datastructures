@@ -35,7 +35,7 @@ public class CoinChangeProblem {
 
 
     /**
-     *  This algorithm works in O(size*amount) time complexity and O(size*amount) space complexity.
+     * This algorithm works in O(size*amount) time complexity and O(size*amount) space complexity.
      */
     static int getNumOfWaysToMakeSumDPSol1(int coins[], int size, int value) {
 
@@ -70,7 +70,7 @@ public class CoinChangeProblem {
     /**
      * This algorithm works in O(size*amount) time complexity and O(amount) space complexity i.e linear.
      *
-     *  Note : When your existing row in the DP Solution table(which is of two dimensional size) just makes use of the last
+     * Note : When your existing row in the DP Solution table(which is of two dimensional size) just makes use of the last
      * row (no other previous rows than the last row), it is quite possible to change that solution with two dimensional array
      * to one dimensional array as a part of further optimization of the space complexity.
      */
@@ -83,10 +83,10 @@ public class CoinChangeProblem {
             solTable[i] = 1;
         }
 
-        for (int i = 1; i <= size; i++){
-            for (int j = 1; j <= value; j++){
+        for (int i = 1; i <= size; i++) {
+            for (int j = 1; j <= value; j++) {
 
-                if (coins[i] <= j){
+                if (coins[i] <= j) {
                     solTable[j] = solTable[j] + solTable[j - coins[i]];
                 }
             }

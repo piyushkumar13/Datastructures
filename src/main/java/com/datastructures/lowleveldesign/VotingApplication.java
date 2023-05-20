@@ -33,10 +33,10 @@ public class VotingApplication {
 
                 Character key = vote.charAt(i);
 
-                if(scoreMap.containsKey(key)){
+                if (scoreMap.containsKey(key)) {
                     int presentScore = scoreMap.get(key);
                     scoreMap.put(key, presentScore + simpleMap[i]);
-                }else{
+                } else {
                     scoreMap.put(key, simpleMap[i]);
                 }
             }
@@ -46,14 +46,14 @@ public class VotingApplication {
 
         Collections.sort(keySet, (a, b) -> {
 
-            if (scoreMap.get(b) != scoreMap.get(a)){
+            if (scoreMap.get(b) != scoreMap.get(a)) {
                 return scoreMap.get(b) - scoreMap.get(a);
             }
             return a.compareTo(b);
         });
 
         StringBuilder sb = new StringBuilder();
-        for (Character key : keySet){
+        for (Character key : keySet) {
             sb.append(key);
         }
 

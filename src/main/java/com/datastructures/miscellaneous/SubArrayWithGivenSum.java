@@ -85,35 +85,35 @@ class Result {
         int queueSum = 0;
         int count = 0;
 
-        while(i < arr.size()){
+        while (i < arr.size()) {
 
-            if(arr.get(i) > k && queue.isEmpty()){
+            if (arr.get(i) > k && queue.isEmpty()) {
                 i++;
-            }else if(arr.get(i) > k && !queue.isEmpty()){
+            } else if (arr.get(i) > k && !queue.isEmpty()) {
                 queueSum = queueSum - queue.removeFirst();
 
-                if(queueSum == k){
+                if (queueSum == k) {
                     count++;
                 }
-            }else if(arr.get(i)<= k && queueSum > k){
+            } else if (arr.get(i) <= k && queueSum > k) {
                 queueSum = queueSum - queue.removeFirst();
-                if(queueSum == k){
+                if (queueSum == k) {
                     count++;
                 }
-            }else if(arr.get(i)<= k && queueSum <= k){
+            } else if (arr.get(i) <= k && queueSum <= k) {
                 queue.add(arr.get(i));
                 queueSum = queueSum + arr.get(i);
-                if(queueSum == k){
+                if (queueSum == k) {
                     count++;
                 }
                 i++;
             }
         }
 
-        while(!queue.isEmpty()){
+        while (!queue.isEmpty()) {
 
             queueSum = queueSum - queue.removeFirst();
-            if(queueSum == k){
+            if (queueSum == k) {
                 count++;
             }
         }
@@ -126,7 +126,7 @@ class Result {
         String a = "\"abc\"";
         String[] str = a.split("\"");
 
-        for(String ab : str){
+        for (String ab : str) {
             System.out.println(a);
         }
 

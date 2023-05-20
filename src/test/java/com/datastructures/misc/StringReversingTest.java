@@ -7,7 +7,7 @@ import static org.junit.Assert.assertEquals;
 public class StringReversingTest {
 
     @Test
-    public void testReverseString(){
+    public void testReverseString() {
 
         String str = "This is junit framework";
         String actualString = StringReversing.reverseString(str);
@@ -15,35 +15,35 @@ public class StringReversingTest {
     }
 
     @Test
-    public void testReverseString_WhenStringIsEmpty(){
+    public void testReverseString_WhenStringIsEmpty() {
         String str = StringReversing.reverseString("");
-        assertEquals("",str.trim());
+        assertEquals("", str.trim());
     }
 
     @Test
-    public void testReverseStringUsingSplit(){
+    public void testReverseStringUsingSplit() {
         String str = "I am having fun programming";
         String actualString = StringReversing.reverseStringUsingSplit(str);
-        assertEquals("programming fun having am I",actualString.trim());
+        assertEquals("programming fun having am I", actualString.trim());
     }
 
     @Test
-    public void testReverseStringUsingSplit_WhenStringIsEmpty(){
+    public void testReverseStringUsingSplit_WhenStringIsEmpty() {
         String str = StringReversing.reverseString("");
-        assertEquals("",str.trim());
+        assertEquals("", str.trim());
     }
 
     @Test
-    public void testReverseStringMoreManualWay(){
+    public void testReverseStringMoreManualWay() {
         String str = "Junit is awesome unit testing framework";
         String actualString = StringReversing.reverseStringUsingSplit(str);
-        assertEquals("framewro",actualString.trim());
+        assertEquals("framewro", actualString.trim());
     }
 
     @Test
-    public void testReverseStringMoreManualWay_WhenStringIsEmpty(){
+    public void testReverseStringMoreManualWay_WhenStringIsEmpty() {
         String str = StringReversing.reverseString("");
-        assertEquals("",str.trim());
+        assertEquals("", str.trim());
     }
 
 }

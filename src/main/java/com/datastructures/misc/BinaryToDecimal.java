@@ -23,7 +23,7 @@ public class BinaryToDecimal {
 
         while (binaryValue != 0) {
             temp = binaryValue % 10;
-            sum += temp * (int)Math.pow(2, i);
+            sum += temp * (int) Math.pow(2, i);
             binaryValue = binaryValue / 10;
             i++;
         }
@@ -37,6 +37,6 @@ public class BinaryToDecimal {
         arr[21] = 1;
 
         System.out.println("The value of binary in decimal is : " + binaryToDecimal(arr));
-        System.out.println("The value of binary in decimal is : "+ binaryToDecimal(1101));
+        System.out.println("The value of binary in decimal is : " + binaryToDecimal(1101));
     }
 }

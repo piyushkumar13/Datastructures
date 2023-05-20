@@ -24,7 +24,7 @@ public class MergeSortExample {
     }
 
     public static void merge(int[] arr, int start, int mid, int last) {
-        int n1 = mid - start + 1 ;
+        int n1 = mid - start + 1;
         int n2 = last - mid;
         int leftArray[] = new int[n1];
         int rightArray[] = new int[n2];
@@ -51,13 +51,13 @@ public class MergeSortExample {
             }
         }
 
-        while (j < n1){
+        while (j < n1) {
             arr[i] = leftArray[j];
             i++;
             j++;
         }
 
-        while (k < n2){
+        while (k < n2) {
             arr[i] = rightArray[k];
             i++;
             k++;
@@ -65,10 +65,10 @@ public class MergeSortExample {
     }
 
     public static void main(String[] args) {
-        int arr[] = {9, 3, 7,5,6,4,8,2};
+        int arr[] = {9, 3, 7, 5, 6, 4, 8, 2};
         mergeSort(arr, 0, arr.length - 1);
         System.out.println("Printing sorted array :::: ");
-        for (int i : arr){
+        for (int i : arr) {
             System.out.print(i + "\t");
         }
     }

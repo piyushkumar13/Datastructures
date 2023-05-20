@@ -51,7 +51,7 @@ public class HeapOperations {
 
     public static int[] insertKey(int[] heap, int key) {
 
-        int [] newArr = Arrays.copyOf(heap, heap.length + 1);
+        int[] newArr = Arrays.copyOf(heap, heap.length + 1);
         heapSize = heapSize + 1;
         newArr[heapSize] = Integer.MIN_VALUE;
         increaseKey(newArr, heapSize, key);

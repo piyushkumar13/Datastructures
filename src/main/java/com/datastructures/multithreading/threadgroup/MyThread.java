@@ -5,11 +5,11 @@ package com.datastructures.multithreading.threadgroup;
  */
 public class MyThread extends Thread {
 
-    public MyThread(ThreadGroup tg,String name){
+    public MyThread(ThreadGroup tg, String name) {
         super(tg, name);
     }
 
-    public void run(){
+    public void run() {
 
         try {
             Thread.sleep(2000);

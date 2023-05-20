@@ -14,10 +14,10 @@ public class ExecuteStack {
 
         System.out.println("Pushing into the stack");
         StackOperations stackOperations = new StackOperations();
-        stackOperations.push(10,stack);
-        stackOperations.push(11,stack);
-        stackOperations.push(12,stack);
-        stackOperations.push(13,stack);
+        stackOperations.push(10, stack);
+        stackOperations.push(11, stack);
+        stackOperations.push(12, stack);
+        stackOperations.push(13, stack);
 
         System.out.println("Popping from the stack");
         stackOperations.pop(stack);

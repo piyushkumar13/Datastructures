@@ -8,7 +8,7 @@ public class BinaryTreeOperations {
 
     public BinaryTreeNode createBinaryTree(BinaryTreeNode root, int arr[]) {
 
-         /* Following are the leaf nodes */
+        /* Following are the leaf nodes */
         BinaryTreeNode nodeTemp1 = new BinaryTreeNode(arr[7], null, null);
         BinaryTreeNode nodeTemp2 = new BinaryTreeNode(arr[8], null, null);
 
@@ -127,24 +127,24 @@ public class BinaryTreeOperations {
     }
 
 
-    public BinaryTreeNode getLCA(BinaryTreeNode root, BinaryTreeNode n1, BinaryTreeNode n2){
+    public BinaryTreeNode getLCA(BinaryTreeNode root, BinaryTreeNode n1, BinaryTreeNode n2) {
 
-        if (root == n1 || root == n2){
+        if (root == n1 || root == n2) {
             return root;
         }
 
         BinaryTreeNode left = getLCA(root.getLeft(), n1, n2);
         BinaryTreeNode right = getLCA(root.getRight(), n1, n2);
 
-        if (left != null && right != null){
+        if (left != null && right != null) {
             return root;
         }
 
-        return left != null? left : right;
+        return left != null ? left : right;
     }
 
-    public int getDiameter(BinaryTreeNode root){
-        if (root == null){
+    public int getDiameter(BinaryTreeNode root) {
+        if (root == null) {
             return 0;
         }
 

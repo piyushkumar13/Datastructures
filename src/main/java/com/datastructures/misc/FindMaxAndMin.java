@@ -29,7 +29,7 @@ public class FindMaxAndMin {
     /**
      * This is the optimized way of finding the min and maximum. Its time complexity is O(n/2).
      * It performs 3n/2 comparisons. This method is for the array having odd parity.
-    * */
+     */
     public static void findMaxAndMin(int[] arr) {
 
         int size = arr.length - 1;

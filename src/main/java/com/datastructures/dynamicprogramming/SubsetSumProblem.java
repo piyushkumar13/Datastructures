@@ -48,7 +48,7 @@ public class SubsetSumProblem {
             return false;
         }
 
-        return isSubsetExistsBruteForce2(arr, size - 1, sum) || isSubsetExistsBruteForce2(arr, size - 1, sum - arr[size-1]);
+        return isSubsetExistsBruteForce2(arr, size - 1, sum) || isSubsetExistsBruteForce2(arr, size - 1, sum - arr[size - 1]);
     }
 
     /**
@@ -89,7 +89,7 @@ public class SubsetSumProblem {
      * This algorithm works in time complexity O(size*sum) and space complexity O(sum).
      * This algorithm further optimizes the space complexity.
      */
-    static boolean isSubsetExistsDPSol2(int[] arr, int sum){
+    static boolean isSubsetExistsDPSol2(int[] arr, int sum) {
         boolean[] solTable = new boolean[sum + 1];
 
         solTable[0] = true;
@@ -101,11 +101,11 @@ public class SubsetSumProblem {
         }
 
         int tempSum = 0;
-        for (int i = 1; i < arr.length; i++){
+        for (int i = 1; i < arr.length; i++) {
 //            tempSum = tempSum + arr[i]; // Using tempSum as a condition for below loop. It signifies using current set of elements
 //                                       // where I have iterated till now, how much total sum can be made.
-            for (int j = 1; j <= sum; j++){
-                if (j >= arr[i]){
+            for (int j = 1; j <= sum; j++) {
+                if (j >= arr[i]) {
                     solTable[j] = solTable[j] || solTable[j - arr[i]];
                 }
             }
@@ -136,7 +136,7 @@ public class SubsetSumProblem {
         if (isSubsetExistsDPSol1(arr, sum)) {
             System.out.println("The subset exists by using DP method 1");
 
-        } else{
+        } else {
             System.out.println("The subset does not exist by using DP method 1");
         }
 

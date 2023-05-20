@@ -20,28 +20,28 @@ public class Trie {
         private Map<Character, TrieNode> dataMap;
         private boolean isEndOfWord;
 
-        TrieNode(){
+        TrieNode() {
             this.dataMap = new HashMap<Character, TrieNode>();
             this.isEndOfWord = false;
         }
     }
 
-    public Trie(){
+    public Trie() {
         root = new TrieNode();
     }
 
     public void createTrie(String word) {
         TrieNode currentNode = root;
 
-        for (int i=0; i < word.length(); i++){
+        for (int i = 0; i < word.length(); i++) {
 
             char ch = word.charAt(i);
 
             TrieNode tempNode = currentNode.dataMap.get(ch);
 
-            if (tempNode == null){
+            if (tempNode == null) {
                 tempNode = new TrieNode();
-                currentNode.dataMap.put(ch,tempNode);
+                currentNode.dataMap.put(ch, tempNode);
             }
 
             currentNode = tempNode;
@@ -50,19 +50,19 @@ public class Trie {
         currentNode.isEndOfWord = true;
     }
 
-    public void createTrieRecursively(String word){
+    public void createTrieRecursively(String word) {
 
         createRecursively(word, root, 0);
     }
 
     private void createRecursively(String word, TrieNode current, int index) {
-        if (index == word.length()){
+        if (index == word.length()) {
             current.isEndOfWord = true;
             return;
         }
 
         TrieNode tempNode = current.dataMap.get(word.charAt(index));
-        if (tempNode == null){
+        if (tempNode == null) {
             tempNode = new TrieNode();
             current.dataMap.put(word.charAt(index), tempNode);
         }
@@ -73,13 +73,13 @@ public class Trie {
     }
 
 
-    public boolean searchWord(String word){
+    public boolean searchWord(String word) {
 
         TrieNode current = root;
-        for (int i = 0; i < word.length(); i++){
+        for (int i = 0; i < word.length(); i++) {
             TrieNode tempNode = current.dataMap.get(word.charAt(i));
 
-            if (tempNode == null){
+            if (tempNode == null) {
                 return false;
             }
 
@@ -89,21 +89,21 @@ public class Trie {
         return current.isEndOfWord;
     }
 
-    public boolean searchWordRecursively(String word){
+    public boolean searchWordRecursively(String word) {
 
         return searchRecursively(word, root, 0);
 
     }
 
-    private boolean searchRecursively(String word, TrieNode current, int index){
+    private boolean searchRecursively(String word, TrieNode current, int index) {
 
-        if (index == word.length()){
+        if (index == word.length()) {
             return current.isEndOfWord;
         }
 
         TrieNode tempNode = current.dataMap.get(word.charAt(index));
 
-        if (tempNode == null){
+        if (tempNode == null) {
             return false;
         }
 

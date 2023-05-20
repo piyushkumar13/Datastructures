@@ -19,7 +19,7 @@ public class SingletonClass {
 
 }
 
-class GetInstanceClass{
+class GetInstanceClass {
 
     public static void main(String[] args) {
         SingletonClass obj = SingletonClass.getInstance();

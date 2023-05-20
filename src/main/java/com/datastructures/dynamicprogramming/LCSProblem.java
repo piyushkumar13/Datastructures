@@ -45,20 +45,18 @@ public class LCSProblem {
         for (int i = 1; i < str1.length; i++) {
             for (int j = 1; j < str2.length; j++) {
 
-                if (str1[i] == str2[j]){
-                    solTable[i][j] = 1 + solTable[i-1][j-1];
-                }
-
-                else {
-                    solTable[i][j] = Math.max(solTable[i-1][j], solTable[i][j-1]);
+                if (str1[i] == str2[j]) {
+                    solTable[i][j] = 1 + solTable[i - 1][j - 1];
+                } else {
+                    solTable[i][j] = Math.max(solTable[i - 1][j], solTable[i][j - 1]);
                 }
             }
         }
 
-        for (int[] arr: solTable){
+        for (int[] arr : solTable) {
             System.out.println(Arrays.toString(arr));
         }
-        return solTable[str1.length-1][str2.length-1];
+        return solTable[str1.length - 1][str2.length - 1];
 
     }
 

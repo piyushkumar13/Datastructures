@@ -26,7 +26,7 @@ public class CollectionFilesHeights {
     private int totalFileSize;
     private Set<Directory> isDirectoryPresentInHeap;
 
-    public CollectionFilesHeights(){
+    public CollectionFilesHeights() {
         directoryDetailsMap = new HashMap<>();
         directoryHeap = new PriorityQueue<>((dir1, dir2) -> dir2.getSize() - dir1.getSize());
         isDirectoryPresentInHeap = new HashSet<>();
@@ -36,37 +36,37 @@ public class CollectionFilesHeights {
         return this.totalFileSize;
     }
 
-    public List<Directory> getTopNCollection(int N){
+    public List<Directory> getTopNCollection(int N) {
 
         PriorityQueue<Directory> tempHeap = new PriorityQueue<>((dir1, dir2) -> dir2.getSize() - dir1.getSize());
         List<Directory> topNCollections = new ArrayList<>();
-        for (int i=0; i<N; i++){
+        for (int i = 0; i < N; i++) {
 
             Directory directory = directoryHeap.poll();
             topNCollections.add(directory);
             tempHeap.add(directory);
         }
 
-        for (int i=0; i<N; i++){
+        for (int i = 0; i < N; i++) {
             directoryHeap.add(tempHeap.poll());
         }
 
         return topNCollections;
     }
 
-    public void addFiles(String fileName, int size, String directoryName){
+    public void addFiles(String fileName, int size, String directoryName) {
 
-        if ("".equals(directoryName)){
+        if ("".equals(directoryName)) {
 
             directoryDetailsMap.put(fileName, new File(fileName, size));
-        }else {
+        } else {
 
             Directory directory = (Directory) directoryDetailsMap.getOrDefault(directoryName, new Directory(directoryName));
 
             directory.setSize(directory.getSize() + size);
             directory.getFiles().add(new File(fileName, size));
 
-            if (!isDirectoryPresentInHeap.contains(directory)){
+            if (!isDirectoryPresentInHeap.contains(directory)) {
                 isDirectoryPresentInHeap.add(directory);
                 directoryHeap.add(directory);
             }
@@ -90,11 +90,10 @@ public class CollectionFilesHeights {
         System.out.println(CollectionFilesHeights.getTotalFileSize());
         List<Directory> topNCollections = CollectionFilesHeights.getTopNCollection(2);
 
-        for (Directory collection: topNCollections)
-            System.out.println(collection.getDirectoryName()+" " + collection.getSize()+" ");
+        for (Directory collection : topNCollections)
+            System.out.println(collection.getDirectoryName() + " " + collection.getSize() + " ");
     }
 }
-
 
 
 interface FileSystemAttributes {

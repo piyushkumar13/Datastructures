@@ -33,20 +33,20 @@ public class StringReversing {
         while (i < arr.length) {
 
             if (arr[i] == ' ') {
-                reverse(j, i-1, arr);
+                reverse(j, i - 1, arr);
                 j = i + 1;
             }
             i++;
         }
-        reverse(j,i-1,arr);
-        reverse(0, i-1, arr);
+        reverse(j, i - 1, arr);
+        reverse(0, i - 1, arr);
         return String.valueOf(arr);
     }
 
     private static void reverse(int j, int i, char arr[]) {
 
-        while (j<i){
-            char temp = arr[j]  ;
+        while (j < i) {
+            char temp = arr[j];
             arr[j] = arr[i];
             arr[i] = temp;
             j++;
@@ -54,15 +54,14 @@ public class StringReversing {
         }
     }
 
-    public static String reverseWordThroughRecursion(String str){
+    public static String reverseWordThroughRecursion(String str) {
 
         String reverse = "";
 
-        if (str.length() == 1){
+        if (str.length() == 1) {
             return str;
-        }
-        else {
-            reverse += str.charAt(str.length()-1) + reverseWordThroughRecursion(str.substring(0, str.length() - 1));
+        } else {
+            reverse += str.charAt(str.length() - 1) + reverseWordThroughRecursion(str.substring(0, str.length() - 1));
         }
 
         return reverse;

@@ -2,7 +2,7 @@ package com.datastructures.sorting;
 
 /**
  * It time complexity is O(n) and space complexity is O(n).
- * */
+ */
 public class CountingSortExample {
 
 

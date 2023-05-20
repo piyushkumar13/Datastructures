@@ -9,8 +9,7 @@ public class TwoWayMergeSortExample {
 
     /* Iterative mergesort function to sor
        t arr[0...n-1] */
-    static void mergeSort(int arr[], int n)
-    {
+    static void mergeSort(int arr[], int n) {
 
         // For current size of subarrays to
         // be merged curr_size varies from
@@ -29,22 +28,20 @@ public class TwoWayMergeSortExample {
         // subarrays of size 2 to create
         // sorted subarrays of size 4, and
         // so on.
-        for (curr_size = 1; curr_size <= n-1;
-             curr_size = 2*curr_size)
-        {
+        for (curr_size = 1; curr_size <= n - 1;
+             curr_size = 2 * curr_size) {
 
             // Pick starting point of different
             // subarrays of current size
-            for (left_start = 0; left_start < n-1;
-                 left_start += 2*curr_size)
-            {
+            for (left_start = 0; left_start < n - 1;
+                 left_start += 2 * curr_size) {
                 // Find ending point of left
                 // subarray. mid+1 is starting
                 // point of right
-                int mid = Math.min(left_start + curr_size - 1, n-1);
+                int mid = Math.min(left_start + curr_size - 1, n - 1);
 
                 int right_end = Math.min(left_start
-                        + 2*curr_size - 1, n-1);
+                        + 2 * curr_size - 1, n - 1);
 
                 // Merge Subarrays arr[left_start...mid]
                 // & arr[mid+1...right_end]
@@ -55,8 +52,7 @@ public class TwoWayMergeSortExample {
 
     /* Function to merge the two haves arr[l..m] and
     arr[m+1..r] of array arr[] */
-    static void merge(int arr[], int l, int m, int r)
-    {
+    static void merge(int arr[], int l, int m, int r) {
         int i, j, k;
         int n1 = m - l + 1;
         int n2 = r - m;
@@ -70,22 +66,18 @@ public class TwoWayMergeSortExample {
         for (i = 0; i < n1; i++)
             L[i] = arr[l + i];
         for (j = 0; j < n2; j++)
-            R[j] = arr[m + 1+ j];
+            R[j] = arr[m + 1 + j];
 
         /* Merge the temp arrays back into
         arr[l..r]*/
         i = 0;
         j = 0;
         k = l;
-        while (i < n1 && j < n2)
-        {
-            if (L[i] <= R[j])
-            {
+        while (i < n1 && j < n2) {
+            if (L[i] <= R[j]) {
                 arr[k] = L[i];
                 i++;
-            }
-            else
-            {
+            } else {
                 arr[k] = R[j];
                 j++;
             }
@@ -94,8 +86,7 @@ public class TwoWayMergeSortExample {
 
         /* Copy the remaining elements of
         L[], if there are any */
-        while (i < n1)
-        {
+        while (i < n1) {
             arr[k] = L[i];
             i++;
             k++;
@@ -103,8 +94,7 @@ public class TwoWayMergeSortExample {
 
         /* Copy the remaining elements of
         R[], if there are any */
-        while (j < n2)
-        {
+        while (j < n2) {
             arr[k] = R[j];
             j++;
             k++;
@@ -113,10 +103,10 @@ public class TwoWayMergeSortExample {
 
 
     public static void main(String[] args) {
-        int arr[] = {5, 3, 7,4,9};
+        int arr[] = {5, 3, 7, 4, 9};
         mergeSort(arr, arr.length);
         System.out.println("Printing sorted array :::: ");
-        for (int i : arr){
+        for (int i : arr) {
             System.out.print(i + "\t");
         }
     }
