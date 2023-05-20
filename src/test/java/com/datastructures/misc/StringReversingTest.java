@@ -37,7 +37,7 @@ public class StringReversingTest {
     public void testReverseStringMoreManualWay() {
         String str = "Junit is awesome unit testing framework";
         String actualString = StringReversing.reverseStringUsingSplit(str);
-        assertEquals("framewro", actualString.trim());
+        assertEquals("framework testing unit awesome is Junit", actualString.trim());
     }
 
     @Test
