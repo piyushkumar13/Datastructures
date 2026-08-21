@@ -1,15 +1,9 @@
-/*
- *  Copyright (c) 2022 GoTo
- *  All Rights Reserved Worldwide.
- *
- *  THIS PROGRAM IS CONFIDENTIAL AND PROPRIETARY TO GOTO
- *  AND CONSTITUTES A VALUABLE TRADE SECRET.
- */
 package com.datastructures.lowleveldesign.ratelimiter;
 
 import java.util.HashMap;
+import java.util.LinkedList;
 import java.util.Map;
-import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.Queue;
 
 /**
  * Below implementation is not thread safe. We can make it thread safe by using concurrent hashmap.
@@ -21,7 +15,7 @@ public class SlidingWindowRateLimiter implements RateLimiter {
 
     private int capacity;
     private int windowInSeconds = 5;
-    private Map<String, ConcurrentLinkedQueue<Long>> slidingWindowMap;
+    private Map<String, Queue<Long>> slidingWindowMap;
 
     public SlidingWindowRateLimiter(int capacity) {
         this.capacity = capacity;
@@ -44,7 +38,7 @@ public class SlidingWindowRateLimiter implements RateLimiter {
                 return false;
             }
         } else {
-            ConcurrentLinkedQueue<Long> queue = new ConcurrentLinkedQueue<>();
+            Queue<Long> queue = new LinkedList<>();
             queue.add(currentTimeStamp);
             slidingWindowMap.put(userId, queue);
             return true;
@@ -53,7 +47,8 @@ public class SlidingWindowRateLimiter implements RateLimiter {
 
     private void evictOlderEntries(String userId, long currentTimeStamp) {
 
-        while (slidingWindowMap.get(userId).size() != 0 && currentTimeStamp - slidingWindowMap.get(userId).peek() > windowInSeconds) {
+        while (slidingWindowMap.get(userId).size() != 0 && currentTimeStamp - slidingWindowMap.get(userId).peek() >= windowInSeconds * 1000L) {
+
             slidingWindowMap.get(userId).poll();
         }
     }

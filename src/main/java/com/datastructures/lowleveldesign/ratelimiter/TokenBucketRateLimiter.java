@@ -1,18 +1,11 @@
-/*
- *  Copyright (c) 2022 GoTo
- *  All Rights Reserved Worldwide.
- *
- *  THIS PROGRAM IS CONFIDENTIAL AND PROPRIETARY TO GOTO
- *  AND CONSTITUTES A VALUABLE TRADE SECRET.
- */
 package com.datastructures.lowleveldesign.ratelimiter;
 
 import java.time.Instant;
 import java.util.HashMap;
-import java.util.concurrent.atomic.AtomicInteger;
 
 /**
  * Based on this implementation https://codedaily.in/rate-limiter-design-java-python-code/#Token_Bucket_Algorithm_for_Rate-limiter
+ * And https://chatgpt.com/share/6a884e09-2ad0-83ee-ad7f-55cf998e40dc
  *
  * The above link implementation is not user specific. Below implementation is user specific.
  *
@@ -23,15 +16,15 @@ import java.util.concurrent.atomic.AtomicInteger;
  */
 public class TokenBucketRateLimiter implements RateLimiter {
 
-    private int timeWindow = 5; // 5 seconds
-    private int tokensCapacity;
-    private int refreshCapacityPerSecond;
-    private HashMap<String, Value> tokenMap;
+    private int tokenRefillWindow = 5; // 5 seconds
+    private int tokensCapacityOfBucket;
+    private int tokensRefreshRatePerSecond;
+    private HashMap<String, Bucket> userTokenBucketMap;
 
     public TokenBucketRateLimiter(int capacity) {
-        this.tokensCapacity = capacity;
-        this.refreshCapacityPerSecond = this.tokensCapacity / this.timeWindow;
-        this.tokenMap = new HashMap<>();
+        this.tokensCapacityOfBucket = capacity;
+        this.tokensRefreshRatePerSecond = this.tokensCapacityOfBucket / this.tokenRefillWindow;
+        this.userTokenBucketMap = new HashMap<>();
     }
 
     @Override
@@ -39,10 +32,10 @@ public class TokenBucketRateLimiter implements RateLimiter {
 
         refill(userId);
 
-        Value user = tokenMap.get(userId);
+        Bucket bucket = userTokenBucketMap.get(userId);
 
-        if (user.getTokens().get() > 0) {
-            user.getTokens().decrementAndGet();
+        if (bucket.getTokens() > 0) {
+            bucket.setTokens(bucket.getTokens() - 1);
             return true;
         } else {
             System.out.println("Request limit is reached");
@@ -53,41 +46,43 @@ public class TokenBucketRateLimiter implements RateLimiter {
 
     private void refill(String userId) {
 
-        if (tokenMap.containsKey(userId)) {
+        if (userTokenBucketMap.containsKey(userId)) {
 
             long now = Instant.now().getEpochSecond();
 
-            long timeElapsed = now - tokenMap.get(userId).getLastRefillUpdateTime();
+            Bucket bucket = userTokenBucketMap.get(userId);
 
-            int refillTokens = (int) timeElapsed * refreshCapacityPerSecond;
+            long timeElapsed = now - bucket.getLastRefillUpdateTime();
+
+            int refillTokens = (int) timeElapsed * tokensRefreshRatePerSecond;
 
             if (refillTokens > 0) {
-                this.tokenMap.put(userId, new Value(new AtomicInteger(Math.min(this.tokenMap.get(userId).getTokens().get() + refillTokens, this.tokensCapacity)), now));
+                bucket.setTokens(Math.min(bucket.getTokens() + refillTokens, this.tokensCapacityOfBucket));
             }
         } else {
 
-            Value user = new Value(new AtomicInteger(this.tokensCapacity), Instant.now().getEpochSecond());
+            Bucket bucket = new Bucket(this.tokensCapacityOfBucket, Instant.now().getEpochSecond());
 
-            tokenMap.put(userId, user);
+            userTokenBucketMap.put(userId, bucket);
         }
     }
 
 
-    private static class Value {
+    private static class Bucket {
 
-        private AtomicInteger tokens;
+        private int tokens;
         private long lastRefillUpdateTime;
 
-        public Value(AtomicInteger tokens, long lastRefillUpdateTime) {
+        public Bucket(int tokens, long lastRefillUpdateTime) {
             this.tokens = tokens;
             this.lastRefillUpdateTime = lastRefillUpdateTime;
         }
 
-        public AtomicInteger getTokens() {
+        public int getTokens() {
             return tokens;
         }
 
-        public void setTokens(AtomicInteger tokens) {
+        public void setTokens(int tokens) {
             this.tokens = tokens;
         }
 

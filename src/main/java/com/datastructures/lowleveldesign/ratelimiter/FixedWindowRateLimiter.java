@@ -1,10 +1,3 @@
-/*
- *  Copyright (c) 2022 GoTo
- *  All Rights Reserved Worldwide.
- *
- *  THIS PROGRAM IS CONFIDENTIAL AND PROPRIETARY TO GOTO
- *  AND CONSTITUTES A VALUABLE TRADE SECRET.
- */
 package com.datastructures.lowleveldesign.ratelimiter;
 
 import java.time.Instant;
@@ -12,6 +5,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
+ *
+ *
+ *
+ * Referred :
+ * https://codedaily.in/rate-limiter-design-java-python-code/#Sliding_window_algorithm
+ * https://chatgpt.com/share/6a88454f-0610-83e8-bbf1-2799e1c472d1
+ *
  * @author Piyush Kumar.
  * @since 22/10/22.
  */
@@ -37,10 +37,10 @@ public class FixedWindowRateLimiter implements RateLimiter {
 
             if (value.getCurrentWindowNumber() < stipulatedWindowNum) {
                 value.setCurrentWindowNumber(stipulatedWindowNum);
-                value.setWindowCapacity(this.capacity);
+                value.setWindowCapacity(0); // this should be 0 as it should be reset here
             }
 
-            if (value.getWindowCapacity() <= this.capacity) {
+            if (value.getWindowCapacity() < this.capacity) {
                 value.setWindowCapacity(value.getWindowCapacity() + 1);
                 return true;
 
@@ -49,7 +49,8 @@ public class FixedWindowRateLimiter implements RateLimiter {
                 return false;
             }
         } else {
-            fixedWindowPerUserWindow.put(userId, new Value(0, stipulatedWindowNum));
+            // First request should also be counted.
+            fixedWindowPerUserWindow.put(userId, new Value(1, stipulatedWindowNum));
 
         }
 
