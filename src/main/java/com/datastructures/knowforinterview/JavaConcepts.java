@@ -69,6 +69,9 @@ public class JavaConcepts {
         list.getFirst();
         list.getLast();
 
+        /* Reverse a list. */
+        Collections.reverse(list);
+
     }
 
     static void checkQueue(){
@@ -86,7 +89,6 @@ public class JavaConcepts {
         queue.add("Birendra");
         queue.remove(); // removes element from the front of the queue. It throws exception if queue is empty.
         queue.poll(); // removes element from the front of the queue. It does not throw exception if queue is empty.
-
 
         for (String ele: queue){
             System.out.println(ele);
@@ -125,6 +127,26 @@ public class JavaConcepts {
         System.out.println(minHeapWithComparator2.poll());
     }
 
+    public static void checkStack(){
+        Stack<Integer> stack = new Stack<>();
+        stack.push(1);
+        stack.push(2);
+        stack.push(3);
+
+        stack.pop();
+        stack.add(4);
+
+        stack.isEmpty();
+        stack.empty();
+
+        int testIntInPrimitive = 5;
+        stack.push(testIntInPrimitive);
+
+        System.out.println("Top of stack : " + stack.peek());
+
+        System.out.println("Stack is " + stack);
+    }
+
     public static void checkMap(){
 
         Map<Integer, String> map = new HashMap<>();
@@ -150,8 +172,19 @@ public class JavaConcepts {
             System.out.println("Entry is : " + entry.getKey() + " value is : " + entry.getValue());
         }
 
-        map.putIfAbsent(5, "Sam");
-        map.putIfAbsent(2, "Ahlawat");
+        /* ###### PutIf ######## */
+        String returnTypeOfPutIfIsValue1 = map.putIfAbsent(5, "Sam");
+        System.out.println("returnTypeOfPutIfIsValue1 : " + returnTypeOfPutIfIsValue1);
+
+        String returnTypeOfPutIfIsValue2 = map.putIfAbsent(2, "Ahlawat");
+        System.out.println("returnTypeOfPutIfIsValue2 : " + returnTypeOfPutIfIsValue2);
+
+        /* ###### ComputeIf ######## */
+        String returnTypeOfComputeIsValue1 = map.computeIfPresent(5, (key, value) -> value + " " + "Karan");
+        System.out.println("returnTypeOfComputeIsValue1 : " + returnTypeOfComputeIsValue1);
+
+        String returnTypeOfComputeIsValue2 = map.computeIfAbsent(10, key -> "Hello");
+        System.out.println("returnTypeOfComputeIsValue2 : " + returnTypeOfComputeIsValue2);
 
         System.out.println("Map is : " + map);
 
@@ -163,16 +196,48 @@ public class JavaConcepts {
 
     }
 
+    public static void checkMisc(){
+
+        String str = "ijkac";
+        char[] charArray = str.toCharArray();
+        Arrays.sort(charArray);
+        String newStr = new String(charArray);
+
+        System.out.println("Unsorted arry : " + str + " Sorted array : " + newStr);
+
+        ArrayList<int[]> result = new ArrayList<>(); // completely valid since Array is object not primitive object.
+        int[][] array = result.toArray(new int[result.size()][]);
+
+        Integer[] arrayToReverse = new Integer[]{4,2,5,2,7,1};// cant do reverse with primitive type, for them, we need to reverse manually.
+        Arrays.sort(arrayToReverse, Comparator.reverseOrder());
+
+        StringBuilder sb = new StringBuilder("cba");
+        String reverseSb = sb.reverse().toString();
+
+        int[] arr = new int[]{2,1,5};
+        int[] clone = arr.clone();
+        System.out.println("Clone array is : " + clone[0]);
+
+        int[] newClonedArray = Arrays.copyOf(arr, arr.length);
+        System.out.println("New Clone array is : " + newClonedArray[0]);
+
+        /* Reverse Array of object. */
+        String[] strArray = new String[]{"A", "B", "C"};
+        Collections.reverse(Arrays.asList(strArray));
+        System.out.println("Reverse array is : " + Arrays.toString(strArray));
+    }
 
     public static void main(String[] args) {
-
 
         checkCollectionsSort();
 
         checkQueue();
 
+        checkStack();
+
         checkMap();
 
+        checkMisc();
 
     }
 
